@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BifurcationsAnalysis</class>
+ <widget class="qMRMLWidget" name="BifurcationsAnalysis">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>817</width>
+    <height>752</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhNone</set>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>                         Welcome in PlacentArt Analysis ! </string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>623</width>
+       <height>750</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="tabletTracking">
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Pre-Treatment</string>
+      </attribute>
+      <widget class="ctkCollapsibleButton" name="inputsCollapsibleButton">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>511</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Inputs</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Input the original volume here :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="qMRMLNodeComboBox" name="inputSelector">
+          <property name="toolTip">
+           <string>Pick the input to the algorithm.</string>
+          </property>
+          <property name="nodeTypes">
+           <stringlist notr="true">
+            <string>vtkMRMLScalarVolumeNode</string>
+           </stringlist>
+          </property>
+          <property name="showChildNodeTypes">
+           <bool>false</bool>
+          </property>
+          <property name="addEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="removeEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="SlicerParameterName" stdset="0">
+           <string>inputVolume</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelMask">
+          <property name="text">
+           <string>Select the segmentation mask :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="qMRMLNodeComboBox" name="maskSelector">
+          <property name="toolTip">
+           <string>Select the segmentation mask.</string>
+          </property>
+          <property name="nodeTypes">
+           <stringlist notr="true">
+            <string>vtkMRMLLabelMapVolumeNode</string>
+           </stringlist>
+          </property>
+          <property name="showChildNodeTypes">
+           <bool>false</bool>
+          </property>
+          <property name="addEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="removeEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="SlicerParameterName" stdset="0">
+           <string>segmentationMask</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="labelMask_2">
+          <property name="text">
+           <string>Select the centerline (if available) :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Once you selected everything, please press &quot;Done&quot; : </string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pushButton">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Done</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="qMRMLNodeComboBox" name="centerlineSelector">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="toolTip">
+           <string>Select the centerline model node.</string>
+          </property>
+          <property name="nodeTypes">
+           <stringlist notr="true">
+            <string>vtkMRMLModelNode</string>
+           </stringlist>
+          </property>
+          <property name="showChildNodeTypes">
+           <bool>false</bool>
+          </property>
+          <property name="noneEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="addEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="removeEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="SlicerParameterName" stdset="0">
+           <string>centerlineSelection</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="ctkCollapsibleButton" name="advancedCollapsibleButton">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>511</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Arteria and Vein Seperation</string>
+       </property>
+       <property name="collapsed">
+        <bool>false</bool>
+       </property>
+       <layout class="QFormLayout" name="formLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>First press initialization :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>Press go to start propagation :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="goButton">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Initialization</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="gooButton">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Go</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <!-- Voici les modifications à apporter à votre fichier UI -->
+
+    <!-- Modification 1: Pour l'onglet Analysis, ajout d'un QScrollArea -->
+    <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+    <string>Analysis</string>
+    </attribute>
+    <!-- Ajouter un QScrollArea comme conteneur principal -->
+    <layout class="QVBoxLayout" name="verticalLayout_tab2">
+    <item>
+        <widget class="QScrollArea" name="scrollArea">
+        <property name="widgetResizable">
+        <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+        <layout class="QVBoxLayout" name="verticalLayout_scroll">
+        <item>
+            <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton">
+            <property name="text">
+            <string>Correction of touching vessels</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_4">
+            <!-- Contenu existant de cette section -->
+            <item row="1" column="0">
+            <widget class="QLabel" name="label_6">
+                <property name="text">
+                <string>Touching vessels correction :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="1" column="1">
+            <widget class="QPushButton" name="touchingButton">
+                <property name="text">
+                <string>Apply touching vessels correction</string>
+                </property>
+            </widget>
+            </item>
+            <item row="2" column="0">
+            <widget class="QLabel" name="label_5">
+                <property name="text">
+                <string>Do you want to reset ?</string>
+                </property>
+            </widget>
+            </item>
+            <item row="2" column="1">
+            <widget class="QPushButton" name="resetButton">
+                <property name="text">
+                <string>Reset correction</string>
+                </property>
+            </widget>
+            </item>
+            </layout>
+            </widget>
+        </item>
+        <item>
+            <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton_2">
+            <property name="text">
+            <string>Correction of kissing vessels</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_5">
+            <!-- Contenu existant de cette section -->
+            <item row="1" column="0">
+            <widget class="QLabel" name="label_10">
+                <property name="text">
+                <string>Kissing vessels correction :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="1" column="1">
+            <widget class="QPushButton" name="initKissing">
+                <property name="text">
+                <string>Init</string>
+                </property>
+            </widget>
+            </item>
+            <!-- Autres éléments existants -->
+            <item row="2" column="1">
+            <widget class="QPushButton" name="kissingButton">
+                <property name="text">
+                <string>Kissing Vessels correction / Clipping</string>
+                </property>
+            </widget>
+            </item>
+            <item row="3" column="0">
+            <widget class="QLabel" name="label_16">
+                <property name="text">
+                <string>Arteria reconstruction : </string>
+                </property>
+            </widget>
+            </item>
+            <item row="3" column="1">
+            <widget class="QPushButton" name="arteriaKissing">
+                <property name="text">
+                <string>Arteria Points</string>
+                </property>
+            </widget>
+            </item>
+            <item row="4" column="1">
+            <widget class="QPushButton" name="arteriaMerge">
+                <property name="text">
+                <string>Merge</string>
+                </property>
+            </widget>
+            </item>
+            <item row="5" column="0">
+            <widget class="QLabel" name="label_17">
+                <property name="text">
+                <string>Vein reconstruction :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="5" column="1">
+            <widget class="QPushButton" name="veinKissing">
+                <property name="text">
+                <string>Vein Points</string>
+                </property>
+            </widget>
+            </item>
+            <item row="6" column="1">
+            <widget class="QPushButton" name="veinMerge">
+                <property name="text">
+                <string>Merge</string>
+                </property>
+            </widget>
+            </item>
+            </layout>
+            </widget>
+        </item>
+        <item>
+            <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton_3">
+            <property name="text">
+            <string>Correction of centerlines</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_6">
+            <!-- Contenu existant de cette section -->
+            <item row="0" column="0">
+            <widget class="QLabel" name="label_11">
+                <property name="text">
+                <string>Delete a centerline :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="0" column="1">
+            <widget class="QPushButton" name="deleteCenterline">
+                <property name="text">
+                <string>Click here to select a centerline to delete</string>
+                </property>
+            </widget>
+            </item>
+            <!-- Autres éléments existants -->
+            <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+                <property name="text">
+                <string>And press Yes to delete : </string>
+                </property>
+            </widget>
+            </item>
+            <item row="1" column="1">
+            <widget class="QPushButton" name="condelCenterline">
+                <property name="text">
+                <string>Yes</string>
+                </property>
+            </widget>
+            </item>
+            <item row="2" column="0">
+            <widget class="QLabel" name="label_12">
+                <property name="text">
+                <string>Correct a centerline :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="2" column="1">
+            <widget class="QPushButton" name="correctCenterline">
+                <property name="text">
+                <string>Click here to select a centerline to correct</string>
+                </property>
+            </widget>
+            </item>
+            <item row="3" column="0">
+            <widget class="QLabel" name="label_14">
+                <property name="text">
+                <string>Press Arteria or Vein :</string>
+                </property>
+            </widget>
+            </item>
+            <item row="3" column="1">
+            <widget class="QPushButton" name="deleteCenterline_4">
+                <property name="text">
+                <string>Arteria</string>
+                </property>
+            </widget>
+            </item>
+            <item row="4" column="1">
+            <widget class="QPushButton" name="deleteCenterline_5">
+                <property name="text">
+                <string>Vein</string>
+                </property>
+            </widget>
+            </item>
+            </layout>
+            </widget>
+        </item>
+        <!-- Ajoutez ici votre quatrième section -->
+        <item>
+        <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton_4">
+            <property name="text">
+                <string> RANSAC Connection </string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_7">
+                <!-- Ajoutez ici le contenu de votre nouvelle section -->
+                <item row="0" column="0">
+                    <widget class="QLabel" name="newSectionLabel">
+                        <property name="text">
+                            <string> Points for disconnected components : </string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="0" column="1">
+                    <widget class="QPushButton" name="newSectionButton">
+                        <property name="text">
+                            <string> Placing Point </string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="1" column="1">
+                    <widget class="QPushButton" name="connectButton">
+                        <property name="text">
+                            <string> Connect </string>
+                        </property>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="correctionButton">
+            <property name="text">
+                <string>Apply correction</string>
+            </property>
+        </widget>
+    </item>
+        </layout>
+        </widget>
+        </widget>
+    </item>
+    </layout>
+    </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Segment Editor</string>
+      </attribute>
+      <widget class="qMRMLSegmentEditorWidget" name="SegmentEditorWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>501</width>
+         <height>651</height>
+        </rect>
+       </property>
+       <property name="segmentationNodeSelectorVisible">
+        <bool>false</bool>
+       </property>
+       <property name="sourceVolumeNodeSelectorVisible">
+        <bool>false</bool>
+       </property>
+       <property name="autoShowSourceVolumeNode">
+        <bool>true</bool>
+       </property>
+       <property name="defaultTerminologyEntrySettingsKey">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Results Table</string>
+      </attribute>
+      <widget class="QPushButton" name="extractDataButton">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>10</y>
+         <width>261</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Extract the final data.</string>
+       </property>
+       <property name="text">
+        <string>Extract data in Excel</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="propertiesTable">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>501</width>
+         <height>321</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>380</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Number of bifurcations :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>410</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Number of endpoints :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>440</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Presence of Hyrtl's anastomosis :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="bifurcationCountLabel">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>380</y>
+         <width>361</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="endpointCountLabel">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>410</y>
+         <width>361</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="anastomoseLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>440</y>
+         <width>361</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkCollapsibleButton</class>
+   <extends>QWidget</extends>
+   <header>ctkCollapsibleButton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLSegmentEditorWidget</class>
+   <extends>qMRMLWidget</extends>
+   <header>qMRMLSegmentEditorWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>BifurcationsAnalysis</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>inputSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>122</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
